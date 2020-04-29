@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Base HTML{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet"
+    href="{% static 'bootstrap4/css/bootstrap.min.css' %}">
+</head>
+<body class="container">
+    <header>
+        {% block header %}
+            {% include 'header.html' %}
+        {% endblock %}
+        <!-- 
+        {#% block carousel %}
+            {#% include 'carousel.html' %}
+        {#% endblock %}
+         -->
+    </header>
+
+    {% block content %}
+        Content
+    {% endblock %}
+
+    <footer>
+        {% block footer %}
+            Footer
+        {% endblock %}
+    </footer>
+
+    <!-- Popper JS -->
+    <script
+    type="text/javascript" 
+    src="{% static 'bootstrap4/js/popper.min.js' %}">
+    </script>
+    <!-- JQuery -->
+    <script
+    type="text/javascript" 
+    src="{% static 'bootstrap4/js/jquery-slim.min.js' %}">
+    </script>
+    <!-- Bootstrap JS -->
+    <script
+    type="text/javascript" 
+    src="{% static 'bootstrap4/js/bootstrap.min.js' %}">
+    </script>
+</body>
+</html>

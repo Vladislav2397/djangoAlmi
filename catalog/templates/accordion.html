@@ -1,0 +1,28 @@
+<div id="accordion" role="tablist" aria-multiselectable="true">
+    {% if category_list %}
+
+    {% for category in category_list %}
+        {% if category.get_subcategories %}
+            <div class="card">
+            <div class="card-header bg-dark" role="tab" id="sectionHeader{{category.id}}">
+                <h5 class="mb-0">
+                    <a class="text-info" data-toggle="collapse" data-parent="#accordion" href="#sectionContent{{category.id}}" aria-expanded="true" aria-controls="sectionContent{{category.id}}">
+                    {{ category }}
+                    </a>
+                </h5>
+            </div>
+            <div id="sectionContent{{category.id}}" class="collapse in show" role="tabpanel" aria-labelledby="sectionHeader{{category.id}}">
+                <div class="card-body bg-secondary">
+                    {% for cat in category.get_subcategories%}
+                        <a href=""><div>{{cat}}</div></a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+    
+    {% else %}
+        Not found categories
+    {% endif %}
+</div>
