@@ -1,0 +1,88 @@
+.accordion-card-header-link {
+  color: aqua;
+}
+
+.accordion-card-header-link:hover {
+  text-decoration: none;
+  color: antiquewhite;
+}
+
+.accordion-card-in-put-header {
+  background-color: #3f464e;
+}
+
+.accordion-card-in-put-header-link {
+  color: aqua;
+  font-weight: 300;
+}
+
+.accordion-card-in-put-header-link:hover {
+  text-decoration: none;
+  color: antiquewhite;
+}
+
+.accordion-card-body {
+  background-color: silver;
+  padding: 0;
+  margin: 0;
+}
+
+.accordion-card-body-link {
+  color: black;
+}
+
+.accordion-card-body-link:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.accordion-card-body-link div {
+  padding: 10px;
+  padding-left: 25px;
+  margin: 0;
+}
+
+.accordion-card-body-link div:hover {
+  background-color: #353a40;
+}
+
+.accordion-card-in-put-body-link:hover {
+  text-decoration: none;
+}
+
+.accordion-card-in-put-body-link div {
+  padding: 10px;
+  padding-left: 35px;
+  margin: 0;
+  color: black;
+}
+
+.accordion-card-in-put-body-link div:hover {
+  color: white;
+  background-color: #353a40;
+}
+
+.product-image {
+  width: 100px;
+  height: 100px;
+}
+
+.my-table {
+  padding: 0;
+  margin: 0;
+}
+
+.table-product-link {
+  color: black !important;
+}
+
+.table-product-link:hover {
+  text-decoration: none;
+  color: antiquewhite;
+}
+
+.table-product-row * {
+  vertical-align: middle !important;
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */

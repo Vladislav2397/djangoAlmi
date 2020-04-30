@@ -1,28 +1,58 @@
+<!-- Including Accordion -->
 <div id="accordion" role="tablist" aria-multiselectable="true">
-    {% if category_list %}
+	{% if category_list %}
+	{% for category in category_list %}{% if category.isMain %}
+	<div class="card">
 
-    {% for category in category_list %}
-        {% if category.get_subcategories %}
-            <div class="card">
-            <div class="card-header bg-dark" role="tab" id="sectionHeader{{category.id}}">
-                <h5 class="mb-0">
-                    <a class="text-info" data-toggle="collapse" data-parent="#accordion" href="#sectionContent{{category.id}}" aria-expanded="true" aria-controls="sectionContent{{category.id}}">
-                    {{ category }}
-                    </a>
-                </h5>
-            </div>
-            <div id="sectionContent{{category.id}}" class="collapse in show" role="tabpanel" aria-labelledby="sectionHeader{{category.id}}">
-                <div class="card-body bg-secondary">
-                    {% for cat in category.get_subcategories%}
-                        <a href=""><div>{{cat}}</div></a>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-        {% endif %}
-    {% endfor %}
-    
-    {% else %}
-        Not found categories
-    {% endif %}
+		<div class="card-header bg-dark p-0" role="tab" id="sectionHeader{{category.id}}">
+			<h5 class="mb-0">
+				<a class="accordion-card-header-link" data-toggle="collapse" data-parent="#accordion" href="#sectionContent{{category.id}}" aria-expanded="true" aria-controls="sectionContent{{category.id}}"><div class="p-3">
+					{{category.title}}
+				</div></a>
+			</h5>
+		</div>
+		
+		{% if category.category_set.all %}
+		<div id="sectionContent{{category.id}}" class="collapse in" role="tabpanel" aria-labelledby="sectionHeader{{category.id}}">
+			<div class="card-body accordion-card-body">
+
+				{% for category in category.category_set.all %}{% if category.isPackage %}
+				<div class="card-header accordion-card-in-put-header p-0" role="tab" id="sectionInHeader{{category.id}}">
+					<h6 class="mb-0">
+						<a class="accordion-card-in-put-header-link" data-toggle="collapse" data-parent="#accordionIn" href="#sectionInContent{{category.id}}" aria-expanded="true" aria-controls="sectionInContent{{category.id}}"><div class="p-3">
+							{{category.title}}
+						</div></a>
+					</h6>
+				</div>
+
+					{% if category.category_set.all %}
+					<div id="sectionInContent{{category.id}}" class="collapse in" role="tabpanel" aria-labelledby="sectionInHeader{{category.id}}">
+						<div class="card-body accordion-card-body">
+							{% for cat in category.category_set.all %}
+							<a class="accordion-card-in-put-body-link" href="{% url 'category-table' cat.id %}">
+								<div>{{ cat.title }}</div>
+							</a>
+							{% endfor %}
+						</div>
+					</div>
+					{% else %}
+						No products
+					{% endif %}
+				{% else %}
+				<a class="accordion-card-body-link" href="{% url 'category-table' category.id %}"><div>
+					{{ category.title }}
+				</div></a>
+				{% endif %}{% endfor %}
+
+			</div>
+		</div>
+		{% else %}
+			Not found subcategories	
+		{% endif %}
+	</div>
+	
+	{% endif %}{% endfor %}
+	{% else %}
+		Not found categories	
+	{% endif %}
 </div>

@@ -4,8 +4,7 @@ from .models import Category, Product
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['title']
-    list_filter = ['subcategory']
+    list_display = ['title', 'isMain', 'isPackage']
 
 
 @admin.register(Product)

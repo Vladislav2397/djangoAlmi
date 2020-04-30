@@ -3,17 +3,13 @@ from django.db import models
 
 class Category(models.Model):
     title = models.CharField('Название', max_length=150)
-    subcategory = models.ManyToManyField(
-        'self', verbose_name='Подкатегории', blank=True
+    parent = models.ForeignKey(
+        'self', on_delete=models.SET_NULL, verbose_name='Родитель',
+        blank=True, null=True
     )
 
-    def get_subcategories(self):
-        return self.subcategory.all()
-
-    def is_main_category(self):
-        if self.subcategory.get(id=1):
-            return True
-        return False
+    isMain = models.BooleanField('Главная категория', default=False)
+    isPackage = models.BooleanField('Пакет категорий', default=False)
 
     def __str__(self):
         return f'{self.title}'
