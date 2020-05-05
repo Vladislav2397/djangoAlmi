@@ -1,6 +1,13 @@
 from django.db import models
 
 
+# TODO: Product model - add field 'isTop' (boolean)
+# TODO: Product model - add field 'pub_date' (date)
+# TODO: Product detail - add analog table
+# TODO: Create home page with carousel
+# TODO: Create forum page
+
+
 class Category(models.Model):
     title = models.CharField('Название', max_length=150)
     parent = models.ForeignKey(
