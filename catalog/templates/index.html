@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    ALMI
+{% endblock %}
+
+{% block content %}
+
+<div class="col my-block">
+	<div class="my-block-header">
+		<h5>Новости и статьи</h5>
+	</div>
+
+	<div class="my-block-body small-text p-0">
+		{% if news %}
+		{% for new in news %}
+			<a href="">
+				<div>
+					<center>
+						<img
+						src="{% if new.image %}
+							{{new.image.url}}
+							{% endif %}"
+							alt="Изображение"> <br>
+						{{new.title}}
+					</center>
+				</div>
+			</a>
+		{% endfor %}
+		{% else %}
+			Not news
+		{% endif %}
+	</div>
+</div>
+
+<div class="col-7 mx-4 my-block">
+	<div class="my-block-header">
+		<h5>Последние поступления</h5>
+	</div>
+
+	<div class="my-block-body p-0">
+		{% if last_added %}
+			<table class="table table-striped my-table">
+				{% for product in last_added %}
+				<tr>
+					<td>
+						<img
+						src="{% if product.image %}
+							{{ product.image.url }}
+							{% endif %}"
+						alt="Изображение"></td>
+					<td>
+						<a href="">{{product.title}}</a></td>
+					<td>{{product.pub_date}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		{% else %}
+			
+		{% endif %}
+	</div>
+</div>
+
+<div class="col my-block">
+	<div class="my-block-header">
+		<h5>Хиты продаж</h5>
+	</div>
+
+	<div class="my-block-body small-text p-0">
+		{% if products %}
+		{% for product in products %}
+			<a href="{% url 'product-detail' product.id %}">
+				<div>
+					<center>
+						<img
+						class="row wh-150 justify-content-center"
+						src="{% if product.image %}
+							{{ product.image.url }}
+							{% endif %}"
+						alt="Изображение">
+						<mark>{{ product.price }}руб.</mark>
+						<p class="col">{{ product.title }}</p>
+					</center>
+				</div>
+			</a>
+		{% endfor %}
+		{% else %}
+			Not top products
+		{% endif %}
+	</div>
+</div>
+
+{% endblock %}

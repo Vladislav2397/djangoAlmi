@@ -1,10 +1,6 @@
 from django.db import models
 
-
-# TODO: Product model - add field 'isTop' (boolean)
-# TODO: Product model - add field 'pub_date' (date)
 # TODO: Product detail - add analog table
-# TODO: Create home page with carousel
 # TODO: Create forum page
 
 
@@ -40,6 +36,8 @@ class Product(models.Model):
     body = models.CharField('Корпус', max_length=30, null=True)
     producer = models.CharField('Производитель', max_length=30, null=True)
     price = models.FloatField('Цена')
+    isTop = models.BooleanField('Это хит продаж', default=False)
+    pub_date = models.DateField('Дата публикации', null=True, blank=True)
 
     image = models.ImageField(
         'Изображение', upload_to='products/', blank=True
@@ -55,3 +53,20 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
+
+
+class News(models.Model):
+    title = models.CharField('Заголовок', max_length=200, null=True)
+    description = models.TextField('Описание')
+    pub_date = models.DateField('Дата публикации', null=True)
+    image = models.ImageField(
+        'Изображение', upload_to='news/',
+        null=True, blank=True
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Новость'
+        verbose_name_plural = 'Новости'

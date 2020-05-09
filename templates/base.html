@@ -9,76 +9,84 @@
     <!-- ? Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'bootstrap4/css/bootstrap.min.css' %}">
 
+	<!-- ? My CSS Style -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
 <body class="container">
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-bottom sticky-top">
-            <button class="navbar-toggler d-lg-none"
-                type="button" data-toggle="collapse"
-                data-target="#collapsibleNavId"
-                aria-controls="collapsibleNavId"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item {% block home %}{% endblock %}">
-                        <a class="nav-link" href="">Главная</a>
-                    </li>
-                    <li class="nav-item {% block catalog %}{% endblock %}">
-                        <a class="nav-link" href="{% url 'category' %}">Каталог товаров</a>
-                    </li>
-                    <li class="nav-item
-                               {% block sell %}{% endblock %}">
-                        <a class="nav-link" href="">Распродажа</a>
-                    </li>
-                    <li class="nav-item
-                               {% block forum %}{% endblock %}">
-                        <a class="nav-link" href="">Форум</a>
-                    </li>
-                    <li class="nav-item
-                               {% block about %}{% endblock %}">
-                        <a class="nav-link" href="">О компании</a>
-                    </li>
-                    <li class="nav-item
-                               {% block contacts %}{% endblock %}">
-                        <a class="nav-link" href="">Контакты</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Поиск</button>
-                </form>
-            </div>
-        </nav>
-    </header>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-bottom sticky-top">
+		<button class="navbar-toggler d-lg-none"
+			type="button" data-toggle="collapse"
+			data-target="#collapsibleNavId"
+			aria-controls="collapsibleNavId"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavId">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item {% block home %}{% endblock %}">
+					<a class="nav-link" href="{% url 'index' %}">Главная</a>
+				</li>
+				<li class="nav-item {% block catalog %}{% endblock %}">
+					<a class="nav-link" href="{% url 'category' %}">Каталог товаров</a>
+				</li>
+				<li class="nav-item
+					{% block sell %}{% endblock %}">
+					<a class="nav-link" href="">Распродажа</a>
+				</li>
+				<li class="nav-item
+					{% block forum %}{% endblock %}">
+					<a class="nav-link" href="">Форум</a>
+				</li>
+				<li class="nav-item
+					{% block about %}{% endblock %}">
+					<a class="nav-link" href="">О компании</a>
+				</li>
+				<li class="nav-item
+					{% block contacts %}{% endblock %}">
+					<a class="nav-link" href="">Контакты</a>
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search">
+				<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Поиск</button>
+			</form>
+		</div>
+	</nav>
+	</header>
 
-    {% block content %}
-        Content
-    {% endblock %}
+	<article class="row article">
+		{% block content %}
+			Content
+		{% endblock %}
+	</article>
 
-    <footer>
-        {% block footer %}
-            Footer
-        {% endblock %}
-    </footer>
+	<footer>
+		{% block footer %}
+			Footer
+		{% endblock %}
+	</footer>
 
-    <!-- ? Popper JS -->
-    <script
-    type="text/javascript" 
-    src="{% static 'bootstrap4/js/popper.min.js' %}">
-    </script>
-    <!-- ? JQuery -->
-    <script
-    type="text/javascript" 
-    src="{% static 'bootstrap4/js/jquery-slim.min.js' %}">
-    </script>
-    <!-- ? Bootstrap JS -->
-    <script
-    type="text/javascript" 
-    src="{% static 'bootstrap4/js/bootstrap.min.js' %}">
-    </script>
+	<!-- ? Popper JS -->
+	<script
+	type="text/javascript" 
+	src="{% static 'bootstrap4/js/popper.min.js' %}">
+	</script>
+	<!-- ? JQuery Slim JS -->
+	<script
+	type="text/javascript" 
+	src="{% static 'bootstrap4/js/jquery-slim.min.js' %}">
+	</script>
+	<!-- ? Bootstrap JS -->
+	<script
+	type="text/javascript" 
+	src="{% static 'bootstrap4/js/bootstrap.min.js' %}">
+	</script>
+
+	<script
+	type="text/javascript"
+	src="{% static 'js/my_script.js' %}">
+	</script>
 </body>
 </html>

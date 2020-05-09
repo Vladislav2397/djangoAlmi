@@ -1,5 +1,6 @@
+{% load static %}
 <!-- Including Accordion -->
-<div id="accordion" role="tablist" aria-multiselectable="true">
+<div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
 	{% if category_list %}
 	{% for category in category_list %}{% if category.isMain %}
 	<div class="card">
@@ -7,6 +8,7 @@
 		<div class="card-header bg-dark p-0" role="tab" id="sectionHeader{{category.id}}">
 			<h5 class="mb-0">
 				<a class="accordion-card-header-link" data-toggle="collapse" data-parent="#accordion" href="#sectionContent{{category.id}}" aria-expanded="true" aria-controls="sectionContent{{category.id}}"><div class="p-3">
+					<img src="{% static 'icons/list.svg' %}" alt="" />
 					{{category.title}}
 				</div></a>
 			</h5>
@@ -20,6 +22,7 @@
 				<div class="card-header accordion-card-in-put-header p-0" role="tab" id="sectionInHeader{{category.id}}">
 					<h6 class="mb-0">
 						<a class="accordion-card-in-put-header-link" data-toggle="collapse" data-parent="#accordionIn" href="#sectionInContent{{category.id}}" aria-expanded="true" aria-controls="sectionInContent{{category.id}}"><div class="p-3">
+							<img class="icons" src="{% static 'icons/list.svg' %}" alt="" />
 							{{category.title}}
 						</div></a>
 					</h6>
